@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+public class NumberChecker4 {
+
+    // Method to check if a number is prime
+    public static boolean isPrime(int number) {
+        if (number <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) return false;
+        }
+        return true;
+    }
+
+    // Method to check if a number is a neon number
+    public static boolean isNeon(int number) {
+        int square = number * number;
+        int sumOfDigits = 0;
+        while (square > 0) {
+            sumOfDigits += square % 10;
+            square /= 10;
+        }
+        return sumOfDigits == number;
+    }
+
+    // Method to check if a number is a spy number
+    public static boolean isSpy(int number) {
+        int sum = 0, product = 1;
+        while (number > 0) {
+            int digit = number % 10;
+            sum += digit;
+            product *= digit;
+            number /= 10;
+        }
+        return sum == product;
+    }
+
+    // Method to check if a number is an automorphic number
+    public static boolean isAutomorphic(int number) {
+        int square = number * number;
+        int temp = number;
+
+        while (temp > 0) {
+            // Compare the last digit of both number and its square
+            if (square % 10 != temp % 10) {
+                return false;
+            }
+            square /= 10;
+            temp /= 10;
+        }
+
+        return true;
+    }
+
+    // Method to check if a number is a buzz number
+    public static boolean isBuzz(int number) {
+		if(number%7==0 || number%10==7){
+			return true;
+		}
+		return false;
+    }
+
+    // Main method to test the utility class
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+		
+		//Take input from users
+        System.out.print("Enter a number: ");
+        int number = sc.nextInt();
+
+        System.out.println(number + " is a Prime number: " + isPrime(number));
+        System.out.println(number + " is a Neon number: " + isNeon(number));
+        System.out.println(number + " is a Spy number: " + isSpy(number));
+        System.out.println(number + " is Automorphic number: " + isAutomorphic(number));
+        System.out.println(number + " is a Buzz number: " + isBuzz(number));
+
+        sc.close();
+    }
+}
