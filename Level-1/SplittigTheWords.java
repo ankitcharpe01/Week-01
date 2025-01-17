@@ -14,6 +14,7 @@ public class SplittigTheWords
 		return count;
 	}
 	
+	//split the words
 	public String[] checkSplitWords(String string , int c){
 		String Words[]=new String[c+1];
 		
@@ -25,7 +26,7 @@ public class SplittigTheWords
 				
 			}else if(string.charAt(i)==' ' ){
 				Words[j++]=temp;
-				temp=" ";
+				temp="";
 				
 			}
 		}
@@ -33,8 +34,10 @@ public class SplittigTheWords
 		return Words;	
 	}
 	
+	//count the words length
 	public int[] countLength(String string , int c){
 		int lengthWord[]=new int[c+1];
+		//space +1 word --> c+1
 		int j=0;
 		int count =0;
 		for(int i=0 ;i<string.length();i++){
@@ -50,6 +53,7 @@ public class SplittigTheWords
 		
 	}
 	
+	// return 2D array which returns a word and length of word
 	public String[][] TwoDArray(String[] Words , int[] lengthWord , int c){
 		String[][] array=new String[c+1][2];
 		int m=0 ,n =0;
@@ -65,6 +69,7 @@ public class SplittigTheWords
 	//main method
 		public static void main(String[]args){
 	    Scanner sc=new Scanner(System.in);
+		
 		//taking input
 		System.out.println("Enter a text :");
 		String string=sc.nextLine();
@@ -79,6 +84,7 @@ public class SplittigTheWords
 		int countLength[]=sw.countLength(string , count);
 		String answer[][]=sw.TwoDArray(countWord ,countLength , count);
 		
+		//Print the answer
 		for(int i=0;i<answer.length;i++){
 			for(int j=0;j<answer[i].length;j++){
 			System.out.print(answer[i][j] + " " );
